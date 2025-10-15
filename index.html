@@ -68,16 +68,45 @@
             color: #333;
         }
 
-        .social-icon {
-            width: 20px;
-            height: 20px;
-            background: #333;
-            border-radius: 2px;
-            transition: opacity 0.3s ease;
+        .admin-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .social-icon:hover {
-            opacity: 0.7;
+        .btn {
+            padding: 8px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: #555;
+        }
+
+        .btn-icon {
+            background: transparent;
+            color: #666;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-icon:hover {
+            color: #333;
+            background: transparent;
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         /* Main Content */
@@ -130,6 +159,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .portfolio-item:hover {
@@ -199,6 +229,133 @@
             color: #ccc;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 20px;
+            z-index: 10;
+        }
+
+        .portfolio-item:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-info {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .lightbox-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-category {
+            font-size: 1rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 2001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
         }
 
         /* About Section */
@@ -293,6 +450,93 @@
             border-top: 1px solid #eee;
         }
 
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal h3 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .helper-text {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 5px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -307,7 +551,7 @@
 
             main {
                 padding: 40px 20px 20px;
-                margin-top: 120px;
+                margin-top: 140px;
             }
 
             .hero h1 {
@@ -336,11 +580,26 @@
             .contact-link {
                 width: 200px;
             }
-        }
 
-        /* Smooth transitions */
-        * {
-            transition: all 0.3s ease;
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 30px;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
         }
 
         /* Loading animation */
@@ -368,7 +627,11 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="social-icon"></div>
+            <div class="admin-controls">
+                <button id="loginBtn" class="btn btn-icon">🔒</button>
+                <button id="addPhotoBtn" class="btn hidden">+ Aggiungi Foto</button>
+                <button id="logoutBtn" class="btn hidden">Logout</button>
+            </div>
         </div>
     </header>
 
@@ -383,65 +646,7 @@
 
             <!-- Portfolio Section -->
             <section id="portfolio" class="portfolio-grid">
-                <div class="portfolio-item fade-in">
-                    <img src="pic1.jpg" alt="Night Portrait" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <div class="portfolio-title">Night Portrait</div>
-                            <div class="portfolio-category">Portrait</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-in">
-                    <img src="pic2.jpg" alt="Urban Life" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <div class="portfolio-title">Urban Life</div>
-                            <div class="portfolio-category">Street</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-in">
-                    <img src="pic3.jpg" alt="Sports Action" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <div class="portfolio-title">Sports Action</div>
-                            <div class="portfolio-category">Sports</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-in">
-                    <img src="pic4.jpg" alt="Automotive" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <div class="portfolio-title">Automotive</div>
-                            <div class="portfolio-category">Commercial</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-in">
-                    <img src="pic5.jpg" alt="Lifestyle" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <div class="portfolio-title">Lifestyle</div>
-                            <div class="portfolio-category">Editorial</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-in">
-                    <img src="pic6.jpg" alt="City Nights" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <div class="portfolio-title">City Nights</div>
-                            <div class="portfolio-category">Urban</div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Le foto verranno generate qui -->
             </section>
 
             <!-- About Section -->
@@ -472,8 +677,8 @@
                 </div>
                 <div class="contact-links">
                     <a href="mailto:ernesto.photo@gmail.com" class="contact-link">Email</a>
-                    <a href="#" class="contact-link">Instagram</a>
-                    <a href="#" class="contact-link">Portfolio</a>
+                    <a href="https://www.instagram.com/itzernesto_?igsh=NXpxNmd4enJ5djhs" target="_blank" rel="noopener noreferrer" class="contact-link">Instagram</a>
+                    <a href="#portfolio" class="contact-link">Portfolio</a>
                 </div>
             </section>
         </div>
@@ -484,45 +689,299 @@
         <p>&copy; 2025 Ernesto Photography. All rights reserved.</p>
     </footer>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <div id="lightboxTitle" class="lightbox-title"></div>
+                <div id="lightboxCategory" class="lightbox-category"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">×</button>
+            <h3>Accesso Amministratore</h3>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="passwordInput" placeholder="Inserisci la password">
+                <div id="loginError" class="error-msg hidden">Password non corretta</div>
+            </div>
+            <button class="btn" onclick="handleLogin()" style="width: 100%; margin-top: 20px;">Accedi</button>
+        </div>
+    </div>
+
+    <!-- Add Photo Modal -->
+    <div id="addPhotoModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAddPhotoModal()">×</button>
+            <h3>Aggiungi Nuova Foto</h3>
+            <div class="form-group">
+                <label>Titolo</label>
+                <input type="text" id="photoTitle" placeholder="Es: Sunset Portrait">
+            </div>
+            <div class="form-group">
+                <label>Categoria</label>
+                <input type="text" id="photoCategory" placeholder="Es: Portrait, Street, Urban">
+            </div>
+            <div class="form-group">
+                <label>URL Immagine</label>
+                <input type="url" id="photoUrl" placeholder="https://...">
+                <div class="helper-text">Carica la foto su un servizio come Imgur o usa un URL diretto</div>
+            </div>
+            <button class="btn" onclick="handleAddPhoto()" style="width: 100%; margin-top: 20px;">Aggiungi Foto</button>
+        </div>
+    </div>
+
     <script>
-        // Smooth scrolling for navigation links
+        // Dati iniziali - usa le tue foto originali pic1.jpg, pic2.jpg, etc.
+        let photos = [
+            {
+                id: 1,
+                src: 'pic1.jpg',
+                title: 'Night Portrait',
+                category: 'Portrait'
+            },
+            {
+                id: 2,
+                src: 'pic2.jpg',
+                title: 'Urban Life',
+                category: 'Street'
+            },
+            {
+                id: 3,
+                src: 'pic3.jpg',
+                title: 'Sports Action',
+                category: 'Sports'
+            },
+            {
+                id: 4,
+                src: 'pic4.jpg',
+                title: 'Automotive',
+                category: 'Commercial'
+            },
+            {
+                id: 5,
+                src: 'pic5.jpg',
+                title: 'Lifestyle',
+                category: 'Editorial'
+            },
+            {
+                id: 6,
+                src: 'pic6.jpg',
+                title: 'City Nights',
+                category: 'Urban'
+            }
+        ];
+
+        let isAuthenticated = false;
+        const CORRECT_PASSWORD = 'ernesto2025';
+        let currentLightboxIndex = 0;
+
+        // Inizializza
+        renderPhotos();
+        initFadeIn();
+
+        // Event listeners
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            document.getElementById('loginModal').classList.add('active');
+        });
+
+        document.getElementById('addPhotoBtn').addEventListener('click', () => {
+            document.getElementById('addPhotoModal').classList.add('active');
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleLogin();
+        });
+
+        // Funzioni
+        function renderPhotos() {
+            const grid = document.querySelector('.portfolio-grid');
+            grid.innerHTML = '';
+
+            photos.forEach((photo, index) => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item fade-in';
+                item.innerHTML = `
+                    <img src="${photo.src}" alt="${photo.title}" class="portfolio-image" onclick="openLightbox(${index})">
+                    <div class="portfolio-overlay" onclick="openLightbox(${index})">
+                        <div class="portfolio-info">
+                            <div class="portfolio-title">${photo.title}</div>
+                            <div class="portfolio-category">${photo.category}</div>
+                        </div>
+                    </div>
+                    ${isAuthenticated ? `<button class="delete-btn" onclick="event.stopPropagation(); deletePhoto(${photo.id})">×</button>` : ''}
+                `;
+                grid.appendChild(item);
+            });
+
+            // Reinitialize fade-in observer
+            initFadeIn();
+        }
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function updateLightboxContent() {
+            const photo = photos[currentLightboxIndex];
+            if (photo) {
+                document.getElementById('lightboxImage').src = photo.src;
+                document.getElementById('lightboxTitle').textContent = photo.title;
+                document.getElementById('lightboxCategory').textContent = photo.category;
+            }
+        }
+
+        function navigateLightbox(direction) {
+            currentLightboxIndex += direction;
+            
+            // Loop around
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = photos.length - 1;
+            } else if (currentLightboxIndex >= photos.length) {
+                currentLightboxIndex = 0;
+            }
+            
+            updateLightboxContent();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function handleLogin() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('loginError');
+
+            if (password === CORRECT_PASSWORD) {
+                isAuthenticated = true;
+                document.getElementById('loginBtn').classList.add('hidden');
+                document.getElementById('addPhotoBtn').classList.remove('hidden');
+                document.getElementById('logoutBtn').classList.remove('hidden');
+                closeLoginModal();
+                renderPhotos();
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            isAuthenticated = false;
+            document.getElementById('loginBtn').classList.remove('hidden');
+            document.getElementById('addPhotoBtn').classList.add('hidden');
+            document.getElementById('logoutBtn').classList.add('hidden');
+            renderPhotos();
+        }
+
+        function handleAddPhoto() {
+            const title = document.getElementById('photoTitle').value;
+            const category = document.getElementById('photoCategory').value;
+            const url = document.getElementById('photoUrl').value;
+
+            if (title && category && url) {
+                const newPhoto = {
+                    id: Date.now(),
+                    src: url,
+                    title: title,
+                    category: category
+                };
+                photos.push(newPhoto);
+                renderPhotos();
+                closeAddPhotoModal();
+                
+                // Reset form
+                document.getElementById('photoTitle').value = '';
+                document.getElementById('photoCategory').value = '';
+                document.getElementById('photoUrl').value = '';
+            }
+        }
+
+        function deletePhoto(id) {
+            if (confirm('Sei sicuro di voler eliminare questa foto?')) {
+                photos = photos.filter(p => p.id !== id);
+                renderPhotos();
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('loginError').classList.add('hidden');
+        }
+
+        function closeAddPhotoModal() {
+            document.getElementById('addPhotoModal').classList.remove('active');
+        }
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Close modals and lightbox on outside click
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Close lightbox with ESC key and arrow keys for navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeLoginModal();
+                closeAddPhotoModal();
+            }
+            
+            // Navigate with arrow keys when lightbox is open
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1);
                 }
+            }
+        });
+
+        // Fade-in animation
+        function initFadeIn() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
             });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Portfolio item stagger animation
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        portfolioItems.forEach((item, index) => {
-            item.style.animationDelay = `${index * 0.1}s`;
-        });
+        }
 
         // Active navigation highlighting
         const navLinks = document.querySelectorAll('.nav-menu a');
@@ -541,17 +1000,6 @@
                     const activeLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
                     if (activeLink) activeLink.classList.add('active');
                 }
-            });
-        });
-
-        // Portfolio hover effects
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
             });
         });
     </script>
